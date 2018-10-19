@@ -1,0 +1,35 @@
+.home {
+  margin-top: 50px;
+
+  .control-row {
+    margin-bottom: 20px;
+  }
+
+  .modal-lg {
+    max-width: 1000px;
+
+    .modal-content {
+      max-width: 1000px;
+    }
+  }
+
+  .form-control-file {
+    display: none;
+  }
+
+  .file-picker {
+    padding-left: 0;
+  }
+
+  input.ng-invalid, textarea.ng-invalid {
+    border-color: red;
+  }
+
+  .form-control:focus {
+    box-shadow: none;
+  }
+
+  .mock-btn + .mock-btn {
+    margin-top: 5px;
+  }
+}

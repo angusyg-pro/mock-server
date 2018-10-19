@@ -1,0 +1,31 @@
+<div class="container home">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="row form-inline control-row">
+            <div class="m-auto">
+              <span class="btn btn-outline-primary" ng-click="home.addMock()">Nouveau mock</span>
+            </div>
+          </div>
+          <div class="row m-auto" ng-repeat="mock in home.mocks | orderBy: 'url'">
+            <ul class="list-group col-12 m-auto">
+              <li class="list-group-item form form-inline">
+                <div class="row">
+                  <div class="col-10 mock-desc">
+                    <h4>{{mock.description}}</h4>
+                    <span><b>{{mock.method}}</b> {{home.SERVER_API.URL}}{{mock.url}} <b>&#8594; HTTP {{mock.statusCode}} {{home.types[mock.type]}} {{home.convertFileType(mock.fileType)}}</b></span>
+                  </div>
+                  <div class="col-2">
+                    <span class="btn btn-outline-primary btn-sm w-100 mock-btn" ng-click="home.updateMock(mock)">Modifier</span>
+                    <span class="btn btn-outline-danger btn-sm w-100 mock-btn" ng-click="home.deleteMock(mock)">Supprimer</span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

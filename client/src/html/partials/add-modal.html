@@ -1,0 +1,58 @@
+<div class="modal-header">
+  <h3 class="modal-title">{{addModal.adding ? 'Nouveau Mock' : 'Modification du Mock'}}</h3>
+</div>
+<div class="modal-body">
+  <form name="newForm" class="form">
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group row">
+          <label for="type" class="col-2 col-form-label">Type</label>
+          <select class="form-control col-2" id="type" name="type" ng-change="addModal.selectType()" ng-model="addModal.newMock.type">
+            <option ng-repeat="type in addModal.types" ng-value="type.type">{{type.label}}</option>
+          </select>
+        </div>
+        <div class="form-group row">
+          <label for="desc" class="col-2 col-form-label">Description</label>
+          <input type="text" class="form-control col-9" id="desc" ng-model="addModal.newMock.description">
+        </div>
+        <div class="form-group row">
+          <label for="method" class="col-2 col-form-label">URL</label>
+          <select class="form-control col-2" id="method" name="method" ng-model="addModal.newMock.method">
+            <option ng-repeat="method in addModal.methods" ng-value="method">{{method}}</option>
+          </select>
+          <input type="text" class="form-control col-7" id="url" ng-model="addModal.newMock.url" ng-pattern="'/mocks/.+'" ng-change="addModal.validateURL()" required>
+        </div>
+        <div class="form-group row" ng-if="addModal.newMock.type !== 'FILE'">
+          <label for="data" class="col-2 col-form-label">Donnée</label>
+          <textarea id="data" name="data" form="newForm" class="form-control col-9" rows="15" ng-class="{'ng-invalid': addModal.invalidData}" ng-change="addModal.validateData()" ng-model="addModal.newMock.data" required></textarea>
+        </div>
+        <div ng-if="addModal.newMock.type === 'FILE'">
+          <div class="form-group row">
+            <label for="filetype" class="col-2 col-form-label">Type de fichier</label>
+            <select class="form-control col-2" id="filetype" name="filetype" ng-model="addModal.newMock.fileType">
+            <option ng-repeat="filetype in addModal.fileTypes" ng-value="filetype">{{filetype.label}}</option>
+          </select>
+          </div>
+          <div class="form-group row">
+            <label for="data" class="col-2 col-form-label">Fichier</label>
+            <div class="col-9 file-picker">
+              <div class="form-inline">
+                <label for="file" class="col-2 btn btn-outline-primary">Choisir</label>
+                <input type="file" class="form-control-file" id="file" ngf-select ng-model="addModal.newMock.data" accept="{{addModal.newMock.fileType.accept}}" required>
+                <span class="col-6">{{addModal.newMock.data.name}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="statusCode" class="col-2 col-form-label">Code retour</label>
+          <input type="number" class="form-control col-1" id="statusCode" ng-model="addModal.newMock.statusCode" required>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-outline-primary" type="button" ng-disabled="!newForm.$valid || addModal.invalidData" ng-click="addModal.validate()">{{addModal.adding ? 'Ajouter' : 'Enregistrer'}}</button>
+  <button class="btn btn-outline-primary" type="button" ng-click="addModal.cancel()">Annuler</button>
+</div>
