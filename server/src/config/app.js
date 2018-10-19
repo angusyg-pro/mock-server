@@ -25,6 +25,12 @@ const app = {
   logFile: path.join(__dirname, '../../../logs/combined.log'),
 
   /**
+   * Type de sortie de log (JSON ou NORMAL)
+   * @type {string}
+   */
+  logType: 'JSON',
+
+  /**
    * Path du dossier contenant les fichiers de mocks
    * @type {string}
    */
