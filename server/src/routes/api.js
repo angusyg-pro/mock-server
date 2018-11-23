@@ -11,7 +11,7 @@ const controller = require('../controllers/api');
 const router = express.Router({ mergeParams: true });
 
 /**
- * Liste touts les mocks
+ * Liste tous les mocks
  * @path {GET} /api
  * @response {json} array of versions
  * @name getMocks

@@ -34,8 +34,8 @@ connect().catch(() => process.exit(1));
 app.use(cors(appCfg.crossOrigin));
 
 // Body parser pour extraire vers un json le body ou les paramètres
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 
 // Client
 if (process.env.NODE_ENV === 'production') {
