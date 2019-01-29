@@ -16,7 +16,7 @@ const app = {
    * @type {number}
    * @default 3002
    */
-  port: process.env.PORT || 3002,
+  port: process.env.PORT || 3000,
 
   /**
    * Path du fichier de log du serveur

@@ -3,8 +3,8 @@
 
   angular
     .module('frontend')
-    .constant('SERVER_API', {
-      URL: 'http://10.0.129.82:3002',
+    .constant('SERVER_API', { 
+      URL: '@@SERVER_URL' 
     })
     .config(RoutingConfig)
 

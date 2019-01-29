@@ -10,11 +10,19 @@ module.exports = {
     out_file: './logs/out.log',
     log_file: './logs/combined.log',
     merge_logs: true,
-    env: {},
+    env: {
+      NODE_ENV: 'development',
+      PORT: 3000,
+      DB_URL: 'localhost:27017',
+      DB_NAME: 'mocks',
+      SERVER_URL: 'http://localhost:3000DDDDD',
+    },
     env_production: {
       NODE_ENV: 'production',
       PORT: 3002,
       DB_URL: '10.0.129.86:27017',
+      DB_NAME: 'mocks',
+      SERVER_URL: 'http://10.0.129.89.120:3002',
     },
   }],
 };

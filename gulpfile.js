@@ -5,7 +5,10 @@ const plugins = require('gulp-load-plugins')();
 const gutil = require('gulp-util');
 const uglify = require('gulp-uglify-es').default;
 const runSequence = require('run-sequence');
+const ecosystem = require('./ecosystem.config');
 
+const envDev = ecosystem.apps[0].env;
+const envProd = ecosystem.apps[0].env_production;
 const libJs = [
   'node_modules/angular/angular.min.js',
   'node_modules/angular-animate/angular-animate.min.js',
@@ -86,6 +89,7 @@ gulp.task('lib-js', () => pumpPromise([
 // Copies and minifies if necessary js files and reloads in dev mode
 gulp.task('js', () => pumpPromise([
   gulp.src((isProduction ? sourceJs : localJs)),
+  plugins.replace("@@SERVER_URL", isProduction ? envProd.SERVER_URL : envDev.SERVER_URL),
   plugins.concat(finalJs),
   gulp.dest(destinationJs),
   plugins.if(isProduction, uglify({ mangle: false })),
