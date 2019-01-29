@@ -22,7 +22,16 @@ Vérifier que les paramètres dans le fichier *docker-compose.yml* à la racine 
 * Le port par défaut de l'application dans le container est 3000.
 * Il faut modifier si besoin le port de la machine host.
 
-Exécuter la commande suivante pour démarrer le container en mode deamon:
+Exécuter la commande suivante dans le dossier pour démarrer le container en mode deamon:
 ~~~~
 sudo docker-compose up -d
 ~~~~
+
+## Arrêt d'un container avec Docker-compose
+
+Dans le dossier contenant le fichier *docker-compose.yml* exécuter la commande:
+~~~~
+sudo docker-compose down
+~~~~
+
+Cette commande arrête le container et supprime le container arrêté.
