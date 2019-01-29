@@ -17,6 +17,8 @@ La commande va alors créer une image Docker disponible avec 2 tags.
 ## Démarrage d'un container avec Docker-compose
 
 Vérifier que les paramètres dans le fichier *docker-compose.yml* à la racine sont corrects:
+* Le nom du container.
+* Le nom de l'image à utiliser.
 * Le port par défaut de l'application dans le container est 3000.
 * Il faut modifier si besoin le port de la machine host.
 
