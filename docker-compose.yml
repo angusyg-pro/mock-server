@@ -1,0 +1,8 @@
+version: '3'
+services:
+  mock-server:
+    image: mock-server
+    volumes:
+      - ./logs:/usr/src/app/logs
+    ports:
+      - "3002:3000"

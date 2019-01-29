@@ -15,14 +15,14 @@ module.exports = {
       PORT: 3000,
       DB_URL: 'localhost:27017',
       DB_NAME: 'mocks',
-      SERVER_URL: 'http://localhost:3000DDDDD',
+      SERVER_URL: 'http://localhost:3000',
     },
     env_production: {
       NODE_ENV: 'production',
-      PORT: 3002,
-      DB_URL: '10.0.129.86:27017',
+      PORT: 3000,
+      DB_URL: '10.0.129.120:27017',
       DB_NAME: 'mocks',
-      SERVER_URL: 'http://10.0.129.89.120:3002',
+      SERVER_URL: 'http://10.0.129.89.120:3000',
     },
   }],
 };
