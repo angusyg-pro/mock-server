@@ -7,7 +7,7 @@ Vérifier dans le fichier *app/ecosystem.config.js* que tous les paramètres son
 ## Création de l'image Docker
 
 Se placer à la racine du dépôt et faire la commande suivante en remplaçant les variables:
-* PROXY_URL: URL du proxy pour connexion de npm au repository externe lors de l'installation.
+* PROXY_URL: URL du proxy pour connexion de npm au repository externe lors de l'installation (http://PBXXXX:PASSWORD@proxynav:8080).
 * VERSION: Numéro de version de l'image.
 ~~~~
 sudo docker build --network=host --build-arg NPMPROXY=PROXY_URL -t mock-server:latest -t mock-server:VERSION .
