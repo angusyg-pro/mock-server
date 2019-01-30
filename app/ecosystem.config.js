@@ -22,7 +22,7 @@ module.exports = {
       PORT: 3000,
       DB_URL: '10.0.129.120:27017',
       DB_NAME: 'mocks',
-      SERVER_URL: 'http://10.0.129.89.120:3002', // URL du serveur back, utilisé par le client Angularjs
+      SERVER_URL: 'http://10.0.129.120:3002', // URL du serveur back, utilisé par le client Angularjs
     },
   }],
 };
