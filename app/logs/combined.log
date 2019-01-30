@@ -1,2 +1,0 @@
-{"level":"INFO","date":1537694296399,"message":"[www:55:10][Server.server.listen()]: Serveur démarré sur le port 3002","pid":24300}
-{"level":"INFO","date":1537694296414,"message":"[db.js:36:14][mongoose.connect.then()]: Connection opened to DB 'mongodb://127.0.0.1:27017/mocks'","pid":24300}

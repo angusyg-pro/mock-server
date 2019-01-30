@@ -2,5 +2,7 @@ app/node_modules/*
 !app/node_modules/tar
 !app/node_modules/tar/*
 app/client/dist
-/logs
+app/logs
 app/data
+/logs
+/data
