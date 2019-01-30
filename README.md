@@ -10,7 +10,7 @@ Se placer à la racine du dépôt et faire la commande suivante en remplaçant l
 * PROXY_URL: URL du proxy pour connexion de npm au repository externe lors de l'installation (http://PBXXXX:PASSWORD@proxynav:8080).
 * VERSION: Numéro de version de l'image.
 ~~~~
-sudo docker build --network=host --build-arg NPMPROXY=PROXY_URL -t mock-server:latest -t mock-server:VERSION .
+sudo docker build --network host --build-arg NPMPROXY=PROXY_URL -t mock-server:latest -t mock-server:VERSION .
 ~~~~
 La commande va alors créer une image Docker disponible avec 2 tags.
 

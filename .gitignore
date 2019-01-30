@@ -3,3 +3,4 @@ app/node_modules/*
 !app/node_modules/tar/*
 app/client/dist
 /logs
+app/data
