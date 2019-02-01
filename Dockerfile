@@ -1,52 +1,34 @@
-FROM node:alpine
+FROM nodejs
 
-USER root
+# Arguments du build
+ARG GIT_REPOSITORY
 
-ARG NPMPROXY
+# Ajout des variables d'environnement
+ENV NODE_APP_SRC /usr/src/nodejs
+ENV PORT 3000
 
-# Set proxy for npm
-RUN npm config set proxy=${NPMPROXY}
-RUN npm config set https-proxy=${NPMPROXY}
-RUN npm config set strict-ssl=false
+# Création du dossier de l'application node
+WORKDIR ${NODE_APP_SRC}
 
-# Install pm2
-RUN npm install pm2 -g 
+# Récupération des sources du projet
+RUN git -c http.sslVerify=false clone ${GIT_REPOSITORY} ${NODE_APP_SRC}
 
-# Install pm2 log rotate and configure it
-RUN pm2 install pm2-logrotate
-RUN pm2 set pm2-logrotate:max_size 10M
-RUN pm2 set pm2-logrotate:retain 10
-RUN pm2 set pm2-logrotate:compress true
-RUN pm2 set pm2-logrotate:dateFormat YYYY-MM-DD_HH-mm-ss
-RUN pm2 set pm2-logrotate:rotateModule true
-RUN pm2 set pm2-logrotate:workerInterval 30
-RUN pm2 set pm2-logrotate:rotateInterval '0 0 * * *'
+# Dossier de l'application
+WORKDIR ${NODE_APP_SRC}/app
 
-# Create app client directory
-WORKDIR /usr/src/app
+# Proxy pour NPM
+RUN npm config set proxy=${http_proxy} && npm config set https-proxy=${https_proxy} && npm config set strict-ssl=false
 
-# Install client app dependencies
-COPY app/client ./client
-COPY app/ecosystem.config.js ./ecosystem.config.js
-COPY app/package.json ./package.json
-COPY app/server ./server
-COPY app/gulpfile.js ./gulpfile.js
-COPY app/node_modules/tar ./node_modules/tar
-
-# Install dependencies
+# Installation de l'application, build et clean des dépendances de dev
 RUN npm install
 RUN npm run build
 RUN npm prune --production
 
-# Remove proxy config for npm, it is useless now
-RUN npm config rm proxy
-RUN npm config rm https-proxy
+# Supprime le proxy npm
+RUN npm config rm proxy && npm config rm https-proxy
 
-# Set envrionment variables
-ENV PORT 3000
-
-# Expose app port
+# Expose le port de l'application node
 EXPOSE ${PORT}
 
-# Monitor app with pm2
+# Monitore l'application node avec pm2
 CMD ["pm2-runtime", "--json", "start", "ecosystem.config.js", "--env", "production"]
